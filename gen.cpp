@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(int argc, char **argv){
-	/*int padding = stoi(argv[1]);
+	int padding = stoi(argv[1]);
 	ofstream out("outStr.txt");
 	char outstr[padding+4];
 	
@@ -19,9 +19,9 @@ int main(int argc, char **argv){
 	outstr[3]= 0x00;
 	out << outstr;
 	out.close();
-	*/
-	char p[8] = "\00\00\00\00\00\40\0a\f0\0";
-	cout << p << endl;
+	
+	//char p[8] = "\00\00\00\00\00\40\0a\f0\0";
+	//cout << p << endl;
 
 	return 0;
 

